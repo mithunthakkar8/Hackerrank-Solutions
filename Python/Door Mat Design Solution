@@ -1,0 +1,11 @@
+height, width = input().split()
+height, width = int(height), int(width)
+for i in range(1,height*2,2):
+    if i<height:
+        print(('.|.'*(i)).center(width,'-'))
+    elif i==(height):
+        print("WELCOME".center(width,'-'))
+    else:
+        print(('.|.'*(height*2-i)).center(width,'-'))
+        
+
