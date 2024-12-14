@@ -1,0 +1,41 @@
+def minion_game(string):
+    # define dictionary for storing vowels and consonants indices 
+    # for Stuart and Kevin respectively
+    alphabet_type = ['vowels', 'consonants']
+    alphabet_indices = [[],[]]
+    alphabets = dict(zip(alphabet_type, alphabet_indices))
+    
+    for i,alphabet in enumerate(string):
+        if alphabet in 'AEIOU':
+            alphabets['vowels'].append(i)
+        else:
+            alphabets['consonants'].append(i)
+                          
+    Kevin_Score = 0
+    Stuart_Score = 0
+
+    #iterate over each vowels/consonants
+    for type_name, type_values in alphabets.items():
+        #iterate over indices of vowels/consonants in the string
+        for i in type_values:
+            #form words from each word that is formed from each index 
+            # to the end of the word
+            for j in range(len(string[i:])):
+                #count occurences of words starting with a vowel
+                if type_name == 'vowels':
+                    Kevin_Score += 1
+                else:
+                    Stuart_Score += 1
+            
+    #print name of player which has a higher score and his score
+    if Kevin_Score>Stuart_Score:
+        print("Kevin", Kevin_Score)
+    elif Kevin_Score<Stuart_Score:
+        print("Stuart", Stuart_Score)
+    else:
+        print("Draw")
+    
+                                
+if __name__ == '__main__':
+    s = input()
+    minion_game(s)
