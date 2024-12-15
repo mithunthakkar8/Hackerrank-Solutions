@@ -1,0 +1,12 @@
+from itertools import combinations
+
+S,k = input().split()
+
+S,k = sorted(list(S)),int(k)
+
+for i in range(k):
+    S_Alphabet_list = list(combinations(S,i+1))
+    for i in S_Alphabet_list:
+        print("".join(i))
+    
+
