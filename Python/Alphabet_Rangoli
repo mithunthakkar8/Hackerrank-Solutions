@@ -1,0 +1,10 @@
+def print_rangoli(size):
+    alphabets_in_english = 'abcdefghijklmnopqrstuvwxyz'
+    
+    for i in range(1,size*2):
+        print('-'.join(''.join(sorted(alphabets_in_english[abs(size-i):size],reverse = True))+alphabets_in_english[abs(size-i)+1:size])
+        .center((size+size-1)*2-1,'-'))
+
+if __name__ == '__main__':
+    n = int(input())
+    print_rangoli(n)
