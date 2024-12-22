@@ -1,0 +1,28 @@
+from collections import defaultdict
+import sys
+
+# Read the number of elements in Group A (n) and Group B (m)
+n, m = input().split()
+n, m = int(n), int(m)
+
+# Read the remaining input (after the first line) which will be used to populate Group A and Group B
+data = sys.stdin.read()
+
+# Initialize a defaultdict of type list to store the elements of Group A and Group B
+d = defaultdict(list)
+
+# Add the first 'n' elements to Group A
+d['Group_A'].extend(data.split()[:n])
+
+# Add the next 'm' elements to Group B
+d['Group_B'].extend(data.split()[n:n+m+1])
+
+# Iterate through each element in Group B
+for B_item in d['Group_B']:
+    # Check if the element exists in Group A
+    if B_item in d['Group_A']:
+        # If it exists, print the positions (1-based index) of its occurrences in Group A
+        print(' '.join([str(index + 1) for index, A_item in enumerate(d['Group_A']) if A_item == B_item]))
+    else:
+        # If the element is not found in Group A, print '-1'
+        print('-1')
