@@ -1,0 +1,18 @@
+# Import the sys module to read input directly from standard input (stdin)
+import sys
+
+# Read the first input line and ignore it (usually used to capture number of test cases or unnecessary data)
+_ = input()
+
+# Loop over each line of input coming from the standard input (sys.stdin)
+for line in sys.stdin:
+    # Split each input line into two parts (a and b), assuming the two values are space-separated
+    a, b = line.split()
+
+    try:
+        # Try to convert both a and b into integers and perform integer division (a // b)
+        print(int(a) // int(b))
+    except (ZeroDivisionError, ValueError) as e:
+        # If there's a ZeroDivisionError (trying to divide by zero) or ValueError (invalid integer conversion), catch the error
+        # and print the error code along with the exception message
+        print("Error Code:", e)
