@@ -1,7 +1,6 @@
 import sys
 from collections import namedtuple
 
-# Read the number of students (N). This value is currently not being used in the code.
 N = input()
 
 # Read the column names (keys) which represent the attributes of each student.
@@ -36,7 +35,7 @@ for Student in Student_Details:
     Total_Marks += int(Student.MARKS)
 
 # Calculate the total number of students.
-Total_Students = len(Student_Details)
+Total_Students = int(N)
 
 # Print the average marks by dividing the total marks by the total number of students.
 print(Total_Marks / Total_Students)
