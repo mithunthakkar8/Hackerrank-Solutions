@@ -1,0 +1,34 @@
+from collections import OrderedDict
+import sys
+
+# Read input for the number of lines N (though not actually used in the code).
+N = input()
+
+# Read all input data from standard input (typically a list of item details).
+data = sys.stdin.read()
+
+# Split the input data into lines (each line contains an item name and price).
+line_separated_data = data.splitlines()
+
+# Create an empty OrderedDict to store item details (item name and their total price).
+item_details = OrderedDict()
+
+# Loop through each line of data (each line is expected to contain an item name and price).
+for line in line_separated_data:
+    # Extract the price (last value in the line).
+    net_price = int(line.split()[-1])
+    
+    # Extract the item name (everything except the last value, which is the price).
+    item_name_list = line.split()[:-1]
+    item_name = ' '.join(item_name_list)  # Join the item name components back into a single string.
+    
+    # Check if the item already exists in the dictionary. If it does, add the new price to the existing price.
+    if item_name in list(item_details.keys()):
+        item_details[item_name] += net_price
+    else: 
+        # If the item is not in the dictionary, add it with the current price.
+        item_details[item_name] = net_price
+
+# Loop through the dictionary and print each item name along with its total price.
+for name, price in item_details.items():
+    print(name, price)
