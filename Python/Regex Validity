@@ -1,0 +1,28 @@
+# Importing necessary modules
+import re  # This module is used for compiling and working with regular expressions
+import sys  # This module is used for interacting with the system and reading input
+
+# Read the first input, which is typically the number of test cases or other metadata
+T = input()
+
+# Reading the rest of the input from standard input (sys.stdin)
+# This allows for reading multiple lines of input after the first one
+data = sys.stdin.read()
+
+# Splitting the entire input data into individual lines, separating by newlines
+# This creates a list of strings where each string is a line from the input
+line_separated_data = data.splitlines()
+
+# Looping over each string (line) in the list
+for string in line_separated_data:
+    try:
+        # Trying to compile the current string as a regular expression
+        # If it's a valid regex, no error will occur
+        re.compile(string)
+        
+        # If successful, print "True", indicating the regex is valid
+        print("True")
+    except re.error:
+        # If an exception is raised (meaning the regex is invalid), catch the error
+        # Print "False" to indicate that the string is not a valid regex
+        print("False")
