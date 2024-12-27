@@ -1,0 +1,13 @@
+# Importing the 'combinations_with_replacement' function from the itertools module.
+# This function generates combinations of elements from an iterable where repetition is allowed.
+from itertools import combinations_with_replacement
+
+# Taking two inputs from the user, `S` (a string) and `k` (an integer), separated by space.
+# `S` will be the set of characters to generate combinations, and `k` represents the length of each combination.
+S, k = input().split()
+
+# Iterating through each combination of length `k` (as an integer) generated from the sorted string `S`
+# `sorted(S)` ensures that the combinations are generated in lexicographical order.
+for i in combinations_with_replacement(sorted(S), int(k)):
+    # Printing each combination by joining the characters together as a string.
+    print(''.join(i))
