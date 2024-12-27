@@ -1,0 +1,47 @@
+import sys  # Import the sys module for reading input from stdin
+
+# Read the size of the set (not used in the code, so stored in '_')
+_ = input()
+
+# Read the elements of the set and map them to integers, then store them in a set 's'
+s = set(map(int, input().split()))
+
+# Read the number of commands (not used in the code, so stored in '_')
+_ = input()
+
+# Read all the remaining input commands as a single string
+Command_Data = sys.stdin.read()
+
+# Split the commands into lines (each line represents a single command)
+line_separated_command_data = Command_Data.splitlines()
+
+# Iterate over each command in the list of commands
+for command_text in line_separated_command_data:
+    # Split each command into a list (e.g., ['remove', '5'])
+    command = list(command_text.split())
+    
+    # Check if the command is 'pop'
+    if command[0] == 'pop':
+        # Remove an arbitrary element from the set
+        s.pop()
+    
+    # Check if the command is 'remove'
+    elif command[0] == 'remove':
+        try:
+            # Extract the value to remove and convert it to an integer
+            value = int(command[1])
+            # Remove the value from the set (raises KeyError if not present)
+            s.remove(value)
+        except KeyError as e:
+            # If the value is not present in the set, ignore the error
+            pass
+    
+    # Check if the command is 'discard'
+    elif command[0] == 'discard':
+        # Extract the value to discard and convert it to an integer
+        value = int(command[1])
+        # Discard the value from the set (no error if the value is not present)
+        s.discard(value)
+
+# After processing all commands, print the sum of the remaining elements in the set
+print(sum(s))
