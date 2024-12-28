@@ -1,0 +1,43 @@
+import sys  # Import the sys module for reading input from stdin
+from collections import deque  # Import deque for efficient queue operations
+
+_ = input()  # Read and discard the size of the set (not used in the logic)
+
+d = deque()  # Initialize an empty deque
+
+# Read all remaining input commands from stdin
+Command_Data = sys.stdin.read()
+
+# Split the commands into individual lines
+line_separated_command_data = Command_Data.splitlines()
+
+# Iterate over each command line
+for command_text in line_separated_command_data:
+    # Split each command into its components (e.g., ['append', '5'])
+    command = list(command_text.split())
+    
+    # Handle 'pop' command to remove the last element
+    if command[0] == 'pop':
+        d.pop()
+    
+    # Handle 'popleft' command to remove the first element
+    elif command[0] == 'popleft':
+        d.popleft()
+    
+    else:
+        value = int(command[1])  # Convert value to integer
+        # Handle 'remove' command to remove a specific value from the deque
+        if command[0] == 'remove':
+            d.remove(value)
+    
+        # Handle 'append' command to add a value to the end of the deque
+        elif command[0] == 'append':
+            d.append(value)
+        
+        # Handle 'appendleft' command to add a value to the start of the deque
+        elif command[0] == 'appendleft':
+            d.appendleft(value)
+
+# Convert all deque elements to strings and print them space-separated
+d = map(str, list(d))
+print(' '.join(d))
