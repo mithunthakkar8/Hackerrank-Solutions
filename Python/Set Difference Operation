@@ -1,0 +1,11 @@
+import sys  # Import the sys module
+
+_ = input()  # Read and discard the number of students in container n (not used in logic)
+n_roll_numbers = input().split()  # Read the roll numbers of container n as a list
+
+_ = input()  # Read and discard the number of students in container b (not used in logic)
+b_roll_numbers = input().split()  # Read the roll numbers of container b as a list
+
+# Convert first list into set and perform the difference operation 
+# Print the length of the resulting set 
+print(len(set(n_roll_numbers).difference(b_roll_numbers)))
