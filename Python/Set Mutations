@@ -1,0 +1,29 @@
+import sys  # Import the sys module
+
+N = input()  # Read the number of elements in set A (not used in logic)
+A = set(input().split())  # Read the elements of set A and store them in a set
+
+M = int(input())  # Read the number of subsequent commands
+
+# Loop through 2 * M lines of input (since each command has 2 lines: the command and the data)
+for i in range(1, M * 2 + 1):
+    if i % 2 == 1:  # If the iteration is odd, read the command
+        command = input().split()[0]  # Read the command (e.g., 'intersection_update')
+    else:
+        data = set(input().split())  # If the iteration is even, read the set data
+
+        # Apply the appropriate set operation based on the command
+        if command == 'intersection_update':
+            A.intersection_update(data)  # Keep only elements found in both sets
+        elif command == 'update':
+            A.update(data)  # Add elements from the data set to A
+        elif command == 'symmetric_difference_update':
+            A.symmetric_difference_update(data)  # Keep elements from A and data that are not in both
+        elif command == 'difference_update':
+            A.difference_update(data)  # Remove elements found in the data set from A
+
+# Convert the elements of set A to integers
+A = map(int, A)
+
+# Print the sum of all the remaining elements in set A
+print(sum(A))
