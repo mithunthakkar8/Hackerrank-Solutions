@@ -1,0 +1,35 @@
+# Accept input string from the user
+S = input()
+
+# Initialize empty strings to store characters categorized by type
+lowercase = ''
+uppercase = ''
+odd_digits = ''
+even_digits = ''
+
+# Iterate through each character in the input string
+for i in S:
+    # Check if the character is an uppercase letter
+    if i.isupper():
+        uppercase += i
+    # Check if the character is a lowercase letter
+    elif i.islower():
+        lowercase += i
+    # Check if the character is an odd digit (must be a digit and odd)
+    elif int(i) % 2 == 1:
+        odd_digits += i
+    # Otherwise, treat it as an even digit
+    else:
+        even_digits += i
+
+# Sort and join the lowercase letters, then assign back to lowercase variable
+lowercase = ''.join(sorted(lowercase))
+# Sort and join the uppercase letters, then assign back to uppercase variable
+uppercase = ''.join(sorted(uppercase))
+# Sort and join the odd digits, then assign back to odd_digits variable
+odd_digits = ''.join(sorted(odd_digits))
+# Sort and join the even digits, then assign back to even_digits variable
+even_digits = ''.join(sorted(even_digits))
+
+# Concatenate the sorted groups and print the result
+print(lowercase + uppercase + odd_digits + even_digits)
