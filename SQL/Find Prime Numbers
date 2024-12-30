@@ -1,0 +1,32 @@
+DECLARE @n INT = 2;  -- Initialize the variable @n to start from 2 (first prime number)
+DECLARE @a INT;  -- Variable @a to check divisibility
+DECLARE @prime_numbers NVARCHAR(MAX) = '';  -- String to store all prime numbers concatenated
+DECLARE @is_prime BIT;  -- Flag to track if @n is a prime number (1 if prime, 0 if not)
+
+WHILE @n < 1000  -- Loop through numbers from 2 to 999 to check for prime numbers
+BEGIN
+    SET @a = 2;  -- Reset the divisor @a to 2 for each new number @n
+    SET @is_prime = 1;  -- Assume the current number @n is prime until proven otherwise using the @is_prime varianble
+    
+    WHILE @a <= @n  -- Check divisibility of @n by numbers from 2 to @n-1
+    BEGIN
+        IF @n % @a = 0 AND @n != @a  -- If @n is divisible by @a (and @a is not equal to @n)
+        BEGIN
+            SET @is_prime = 0;  -- Set @is_prime to 0, meaning @n is not a prime number
+            BREAK;  -- Break out of the inner loop as we already know @n is not prime
+        END
+        SET @a = @a + 1;  -- Increment the divisor @a to check the next number
+    END
+    
+    -- After the divisibility check, only append @n if it's still marked as prime
+    IF @is_prime = 1
+    BEGIN
+        -- Concatenate the prime number @n to the string @prime_numbers, separated by '&'
+        SET @prime_numbers = @prime_numbers + CAST(@n AS VARCHAR) + '&';
+    END
+    
+    SET @n = @n + 1;  -- Move to the next number
+END;
+
+-- Print all the prime numbers, removing the last '&' character
+PRINT LEFT(@prime_numbers, LEN(@prime_numbers)-1);
