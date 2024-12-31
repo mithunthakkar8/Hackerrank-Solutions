@@ -1,7 +1,4 @@
 def merge_the_tools(string, k):
-    # Calculate the number of substrings to be created by dividing the length of the string by k
-    number_of_substrings = len(string) / k
-
     # Loop through the string in steps of k
     for i in range(0, len(string), k):
         # Get a substring of length k starting at index i and convert it to a set to remove duplicates
@@ -9,10 +6,7 @@ def merge_the_tools(string, k):
 
         # Print the substring by joining the unique characters together
         print(''.join(substring_char))
-
+        
 if __name__ == '__main__':
-    # Input the string and the integer k
     string, k = input(), int(input())
-
-    # Call the function to process the input
     merge_the_tools(string, k)
