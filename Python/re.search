@@ -1,0 +1,26 @@
+import re  # Import the regular expression module
+
+# Input the main string S
+S = input()  # Input the string S
+# Input the substring k that we need to find in S
+k = input()  # Input the substring k
+
+# Check if the substring k exists in the string S
+if re.search(k, S) == None:
+    # If no match is found, print (-1, -1)
+    print((-1, -1))
+else:
+    # If a match is found, loop through the string to find all occurrences
+    for _ in range(len(S)):  # Loop to process the string and find occurrences of k
+        m = re.search(k, S)  # Use re.search to find the first occurrence of k in S
+        
+        # If a match is found
+        if m != None:
+            # Print the start and end indices of the match
+            # m.start() gives the start index of the match
+            # m.end() gives the end index, but we subtract 1 to get the inclusive end index
+            print((m.start(), m.end() - 1))
+            
+            # Modify the string S by replacing the matched substring with '_'
+            # This prevents re-matching the same part of the string in subsequent iterations
+            S = S[:m.start()] + '_' + S[m.start() + 1:]  # Replace the matched substring with '_'
