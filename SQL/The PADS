@@ -1,0 +1,10 @@
+-- First Query: Concatenate name and occupation with the first letter of the occupation in parentheses
+select concat(name, '(', left(occupation, 1), ')') as name_occupation  
+from occupations  
+order by name  
+
+-- Second Query: Get a summary of the total count of each occupation, formatted in a sentence
+select concat('There are a total of ', count(occupation), ' ', lower(occupation), 's.') as occupation_summary  
+from occupations  
+group by occupation  
+order by count(occupation), occupation  
