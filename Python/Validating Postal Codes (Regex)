@@ -1,0 +1,18 @@
+# This regex checks if the input is exactly 6 digits long, from start to end.
+regex_integer_in_range = r"^\d{6}$"    # '^' asserts the start, '\d{6}' matches exactly 6 digits, '$' asserts the end.
+
+# This regex finds alternating repetitive digit pairs.
+# (\d) captures any digit, and (?=.\1) is a lookahead to ensure that the same digit (\1) appears again with exactly one character in between.
+regex_alternating_repetitive_digit_pair = r"(\d)(?=.\1)"    # 'r' makes it a raw string, avoiding issues with escape sequences like \1.
+
+import re  # Import the 're' module for regular expressions
+
+# Taking the input string from the user
+P = input()
+
+# The print statement checks two conditions:
+# 1. If the input matches the regex for exactly 6 digits.
+# 2. If the number of alternating repetitive digit pairs found is less than 2.
+# If both are true, it prints True; otherwise, False.
+print (bool(re.match(regex_integer_in_range, P))  # Check if the input matches the 6-digit pattern.
+       and len(re.findall(regex_alternating_repetitive_digit_pair, P)) < 2)  # Count the alternating repetitive digit pairs and ensure there are fewer than 2.
