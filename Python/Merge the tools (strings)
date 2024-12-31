@@ -1,12 +1,23 @@
 def merge_the_tools(string, k):
-    # Loop through the string in steps of k
+    # Loop through the string in steps of k, creating substrings of length k
     for i in range(0, len(string), k):
-        # Get a substring of length k starting at index i and convert it to a set to remove duplicates
-        substring_char = set(string[i:i+k])
+        # Initialize a set to track unique characters and a list to store the resulting characters
+        seen = set()
+        substring_char = []
+        
+        # Iterate through each character in the current substring
+        for j in string[i:i+k]:
+            # If the character hasn't been seen yet, add it to the set and append to the result list
+            if j not in seen:
+                seen.add(j)
+                substring_char.append(j)
 
-        # Print the substring by joining the unique characters together
+        # Print the substring by joining the characters in the list (which are unique and in order)
         print(''.join(substring_char))
         
 if __name__ == '__main__':
+    # Input the string and the value of k (length of each substring)
     string, k = input(), int(input())
+    
+    # Call the function to process the string and print the result
     merge_the_tools(string, k)
