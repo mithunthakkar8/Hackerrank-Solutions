@@ -1,0 +1,19 @@
+import re  # Importing the 're' module for regular expression operations
+
+# Taking an input string from the user
+string = input()
+
+# Using 're.finditer' to find all matches of the given regex pattern in the string.
+# The pattern looks for two or more consecutive vowels that are preceded and followed by a consonant and are not at the start or end of the string.
+matched_substrings_iter = re.finditer(r'(?!=[AEIOUaeiou]|^)[AEIOUaeiou]{2,}(?![AEIOUaeiou]|$)', string)
+
+found = False  # A flag to keep track of whether any match is found
+
+# Iterating over the matched substrings (if any)
+for match in matched_substrings_iter:
+    print(match.group())  # Print the matched substring
+    found = True  # Set the flag to True, indicating that a match was found
+
+# If no match was found, print -1
+if found == False:
+    print(-1)
