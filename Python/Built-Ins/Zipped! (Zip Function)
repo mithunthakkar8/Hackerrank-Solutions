@@ -1,0 +1,22 @@
+# Take two inputs N and X from the user, separated by a space
+# N = number of students, X = number of subjects
+N, X = input().split()
+
+# Convert N and X from strings to integers
+N, X = int(N), int(X)
+
+# Initialize an empty list to store the marks of all subjects
+Subject_Marks = []
+
+# Loop X times to take input for each subject's marks
+for _ in range(X):
+   # For each subject, read the marks (space-separated), convert them to floats, 
+   # and append the list of marks to the Subject_Marks list
+   Subject_Marks.append(list(map(float, input().split())))
+
+# Use zip to group marks of each student across all subjects 
+# (zip(*Subject_Marks) transposes the data from subjects-wise to student-wise)
+for student_marks in list(zip(*Subject_Marks)):
+    # Calculate and print the average marks for each student
+    # sum(student_marks) gives the total marks, len(student_marks) is the number of subjects
+    print(sum(student_marks)/len(student_marks))
