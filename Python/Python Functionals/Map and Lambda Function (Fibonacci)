@@ -1,0 +1,28 @@
+# Define a lambda function 'cube' that takes a number 'x' and returns its cube (x^3)
+cube = lambda x: x**3
+
+# Define a function to generate the first 'n' Fibonacci numbers
+def fibonacci(n):
+    # Initialize the first two Fibonacci numbers
+    first = 0
+    second = 1
+    
+    # Create a list to store the Fibonacci sequence, starting with the first two numbers
+    fibonacci_list = [first, second]
+    
+    # Generate the remaining Fibonacci numbers by adding the last two elements in the list
+    # The loop runs 'n-2' times because the first two numbers are already in the list
+    for i in range(n-2):
+        fibonacci_list.append(fibonacci_list[-1] + fibonacci_list[-2])
+
+    # Handle the cases where n is 0 or 1
+    if n == 0:
+        return []
+    elif n == 1:
+        return [first]
+    else:
+        return fibonacci_list
+    
+if __name__ == '__main__':
+    n = int(input())
+    print(list(map(cube, fibonacci(n))))
