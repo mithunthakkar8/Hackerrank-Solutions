@@ -4,9 +4,8 @@ N = input()
 # Read a space-separated string of integers and store them as a list of strings
 N_List = input().split()
 
-# Check if all integers in N_List are positive and if any integer is palindromic i.e. meets one of two conditions:
-# 1. It is less than 10
-# 2. The first and last digits of the number are the same
+# Check if all integers in N_List are positive and if any integer meets the condition:
+# The first and last digits of the number are the same
 # The 'all' function ensures that all elements in the list comprehension are True (i.e., all numbers are positive)
-# The 'any' function checks if at least one number meets either of the two conditions in the second list comprehension
-print(all([(int(i) > 0) for i in N_List]) and any([int(i) < 10 or i[0] == i[-1] for i in N_List]))
+# The 'any' function checks if at least one number has its first and last digits being the same
+print(all([(int(i) > 0) for i in N_List]) and any([i[0] == i[-1] for i in N_List]))
