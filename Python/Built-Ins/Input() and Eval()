@@ -1,19 +1,19 @@
 # Take two inputs x and k from the user, separated by a space
-# x is a value that will be substituted into the expression P, and k is the integer to compare the result against
+# x is a string representing the value to substitute into the expression, 
+# and k is the integer value that will be compared with the result of the evaluated expression
 x, k = input().split()
 
-# Take another input P which represents a mathematical expression involving the variable 'x'
+# Take another input P, which is a mathematical expression involving the variable 'x'
 # Example: P could be something like "2*x + 3"
 P = input()
 
-# Replace the variable 'x' in the expression P with the value of x provided by the user
-# This transforms the string P into a valid mathematical expression (e.g., "2*5 + 3" if x was 5)
-P_expression = P.replace('x', x)
+# Convert the value of x from a string to an integer for mathematical calculations
+x = int(x)
 
-# Evaluate the transformed expression using the eval() function
-# eval() will calculate the result of the expression (e.g., 13 if the expression was "2*5 + 3")
-P_expression_result = eval(P_expression)
+# Use eval() to evaluate the expression P after replacing 'x' with the value of x
+# For example, if P is "2*x + 3" and x is 5, eval() will compute 2*5 + 3 = 13
+P_expression_result = eval(P)
 
 # Compare the result of the evaluated expression with the integer value of k
-# If the two are equal, it prints True; otherwise, it prints False
+# If the result of the expression is equal to k, it prints True; otherwise, it prints False
 print(int(k) == P_expression_result)
