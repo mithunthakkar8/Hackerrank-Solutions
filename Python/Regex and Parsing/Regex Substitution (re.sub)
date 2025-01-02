@@ -1,0 +1,26 @@
+# Import the regular expression (re) module for pattern matching and substitution
+import re
+
+# Read the number of test cases from input
+N = input()
+
+# Iterate over the range of test cases, processing each input string
+for _ in range(int(N)):
+    
+    # Read the input string that needs to be processed
+    text = input()
+    
+    # Use re.sub to replace '&&' with 'and' when surrounded by whitespace
+    # (?<=\s) asserts that there is a space before '&&' (positive lookbehind)
+    # (?=\s) asserts that there is a space after '&&' (positive lookahead)
+    # This ensures '&&' is only replaced when it appears as a separate word
+    text = re.sub(r'(?<=\s)&&(?=\s)', 'and', text)
+    
+    # Use re.sub to replace '||' with 'or' when surrounded by whitespace
+    # (?<=\s) asserts that there is a space before '||' (positive lookbehind)
+    # (?=\s) asserts that there is a space after '||' (positive lookahead)
+    # This ensures '||' is only replaced when it appears as a separate word
+    text = re.sub(r'(?<=\s)\|\|(?=\s)', 'or', text)
+    
+    # Output the modified text after performing all replacements
+    print(text)
