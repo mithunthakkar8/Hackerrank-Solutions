@@ -17,7 +17,7 @@ for _ in range(n):
     # - Name part starting with an alphabet character (a-z or A-Z)
     # - Remaining name part, including letters, underscores, numbers, hyphens, and dots.
     # - The domain containing only alphabetical characters.
-    # - The extension containing only alphabetical that must be 1 to 3 characters in length.
+    # - The extension containing only alphabets that must be 1 to 3 characters in length.
     if bool(re.match('^[a-zA-Z][\w|\-|\.]+@[a-zA-Z]+\.[a-zA-Z]{1,3}$', email_address)):
         # If the email address matches the pattern, format and print the name and email address.
         print(email.utils.formataddr((name, email_address)))
