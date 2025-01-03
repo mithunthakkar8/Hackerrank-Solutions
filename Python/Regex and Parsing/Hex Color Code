@@ -1,0 +1,24 @@
+# Import the necessary modules
+import re
+import sys
+
+# Read the number of test cases or CSS code snippets (if needed)
+N = int(input())
+
+# Read the entire CSS code input from the user via standard input (sys.stdin.read)
+css_code = sys.stdin.read()
+
+# Define the regular expression pattern to match the content within curly braces {}
+pattern = r'\{([^}]*)\}'
+
+# Use re.findall() to find all occurrences of the pattern (content inside the curly braces)
+matches_body = re.findall(pattern, css_code)
+
+# Iterate over the matched contents within curly braces
+for match_body in matches_body:
+    # For each matched block of CSS, find hexadecimal color codes starting with '#'
+    matches_hex = re.findall('#[0-9A-Fa-f]{3,6}', match_body)
+    
+    # Iterate over the found hex color codes and print them
+    for match_hex in matches_hex:
+        print(match_hex)
