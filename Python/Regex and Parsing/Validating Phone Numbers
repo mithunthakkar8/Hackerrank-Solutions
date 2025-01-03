@@ -1,0 +1,22 @@
+# Import the regular expression (re) module for pattern matching.
+import re
+
+# Read the number of test cases (N) from input.
+N = int(input())
+
+# Iterate over the range of N to process each test case.
+for _ in range(N):
+    # Read the input string (phone number).
+    number = input()
+    
+    # Match the input against the regular expression pattern for a valid mobile number.
+    # The pattern checks if the number starts with 7, 8, or 9, followed by exactly 9 digits.
+    # ^ ensures the pattern matches from the start of the string.
+    # \d{9} matches exactly 9 digits after the first digit.
+    # $ ensures the string ends after the 10 digits, preventing extra characters.
+    if bool(re.match(r'^[7|8|9]\d{9}$', number)):
+        # Print 'YES' if the input matches the pattern (valid number).
+        print('YES')
+    else:
+        # Print 'NO' if the input doesn't match the pattern (invalid number).
+        print('NO')
