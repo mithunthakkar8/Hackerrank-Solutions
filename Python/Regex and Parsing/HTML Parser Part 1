@@ -1,27 +1,40 @@
+# Import the necessary HTMLParser class from the 'html.parser' module
 from html.parser import HTMLParser
 import sys
 
-# create a subclass and override the handler methods
+# Define a custom subclass of HTMLParser and override its handler methods
 class MyHTMLParser(HTMLParser):
+    # Handle the start of a tag (e.g., <tag>)
     def handle_starttag(self, tag, attrs):
+        # Print the tag name at the start
         print("Start :", tag)
+        # If the tag has attributes, print each attribute with its value
         if attrs != []:
             for attr in attrs:
                 print(f'-> {attr[0]} > {attr[1]}')
+
+    # Handle the end of a tag (e.g., </tag>)
     def handle_endtag(self, tag):
-        print ("End   :", tag)
+        # Print the tag name at the end
+        print("End   :", tag)
+
+    # Handle self-closing tags (e.g., <tag />)
     def handle_startendtag(self, tag, attrs):
-        print ("Empty :", tag)
+        # Print the tag name for self-closing tags
+        print("Empty :", tag)
+        # If the tag has attributes, print each attribute with its value
         if attrs != []:
             for attr in attrs:
                 print(f'-> {attr[0]} > {attr[1]}')
 
-
+# Read the number of test cases (not used here, just for input structure)
 N = input()
+
+# Read the entire HTML content from the standard input (stdin)
 html_text = sys.stdin.read()
-# instantiate the parser and fed it some HTML
+
+# Instantiate the custom HTMLParser class
 parser = MyHTMLParser()
+
+# Feed the HTML content to the parser for processing
 parser.feed(html_text)
-
-
-        
