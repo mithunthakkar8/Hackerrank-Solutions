@@ -1,0 +1,19 @@
+# Import the regular expression (re) module to use regex functions
+import re
+
+# Read the number of test cases (T) from user input
+T = input()
+
+# Iterate through the range of the number of test cases
+for _ in range(int(T)):
+    # Read each test case (N) as a string input
+    N = input()
+    
+    # Use re.match() to check if the input string (N) matches the floating-point number pattern
+    # The pattern is explained below:
+    # ^[+|-]?  : The string can optionally start with a '+' or '-' sign
+    # \d*      : Zero or more digits can appear before the decimal point
+    # \.       : A literal dot '.' (mandatory for a decimal number)
+    # \d+      : One or more digits must follow after the decimal point
+    # $        : The string must end after the digits following the decimal point
+    print(bool(re.match(r'^[+|-]?\d*\.\d+$', N)))
