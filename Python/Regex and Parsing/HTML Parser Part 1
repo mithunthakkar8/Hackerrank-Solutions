@@ -1,0 +1,27 @@
+from html.parser import HTMLParser
+import sys
+
+# create a subclass and override the handler methods
+class MyHTMLParser(HTMLParser):
+    def handle_starttag(self, tag, attrs):
+        print("Start :", tag)
+        if attrs != []:
+            for attr in attrs:
+                print(f'-> {attr[0]} > {attr[1]}')
+    def handle_endtag(self, tag):
+        print ("End   :", tag)
+    def handle_startendtag(self, tag, attrs):
+        print ("Empty :", tag)
+        if attrs != []:
+            for attr in attrs:
+                print(f'-> {attr[0]} > {attr[1]}')
+
+
+N = input()
+html_text = sys.stdin.read()
+# instantiate the parser and fed it some HTML
+parser = MyHTMLParser()
+parser.feed(html_text)
+
+
+        
