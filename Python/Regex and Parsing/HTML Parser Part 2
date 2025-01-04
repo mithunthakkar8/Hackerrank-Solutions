@@ -1,0 +1,35 @@
+# Import the necessary HTMLParser class from the 'html.parser' module
+from html.parser import HTMLParser
+import sys
+
+# Define a custom subclass of HTMLParser to handle comments and data within the HTML content
+class MyHTMLParser(HTMLParser):
+
+    # This method handles HTML comments encountered during parsing
+    def handle_comment(self, data):
+        # Check if the comment is a multi-line comment by checking for newlines within the comment
+        if '\n' in data:
+            # Print multi-line comment indicator followed by the actual comment content
+            print(">>> Multi-line Comment \n" + data)
+        else: 
+            # Print single-line comment indicator followed by the comment content
+            print(">>> Single-line Comment \n" + data)
+
+    # This method handles the textual data found within HTML tags
+    def handle_data(self, data):
+        # Exclude pure newline data (i.e., ignore if data is just '\n')
+        if data != '\n':
+            # Print data indicator followed by the actual data content
+            print(">>> Data\n" + data)
+
+# Read the number of test cases (not actually used in this script but included for input structure purposes)
+N = input()
+
+# Read the entire HTML content from standard input (stdin) to parse it
+html_text = sys.stdin.read()
+
+# Instantiate the custom HTMLParser class
+parser = MyHTMLParser()
+
+# Feed the HTML content to the parser for processing
+parser.feed(html_text)
