@@ -1,0 +1,18 @@
+# Import the 're' module to enable the use of regular expressions
+import re
+
+# Take a string input from the user
+S = input()
+
+# Use 're.search' to find the first occurrence of any alphanumeric character ([a-zA-Z0-9])
+# that is followed immediately by the same character (using backreference '\1').
+# The pattern '([a-zA-Z0-9])' captures a single alphanumeric character.
+# '\1' ensures that the next character in the string is the same as the one captured.
+match = re.search(r'([a-zA-Z0-9])\1', S)
+
+# If a match is found, print the repeated character using 'group(1)' to retrieve the first capture group.
+# If no match is found, print '-1'.
+if match:
+    print(match.group(1))
+else:
+    print(-1)
