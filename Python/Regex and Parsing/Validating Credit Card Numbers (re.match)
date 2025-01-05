@@ -1,0 +1,21 @@
+import re  # Importing the regular expressions module
+
+# Number of test cases
+T = int(input())  # Input the number of test cases
+
+# Loop through each test case
+for _ in range(T):
+    # Regular expression to validate the input
+    match = re.match(
+        r'^'                                # Start of the string
+        r'(?!.*(\d)(\1|-)(\1|-)(\1|-)+)'    # Negative lookahead to prevent repeating digits more than three times
+        r'[4|5|6]'                          # Card number must start with 4, 5, or 6
+        r'\d{3}-?\d{4}-?\d{4}-?\d{4}$',     # Matches 16 digits optionally separated by hyphens
+        input()                             # Input string to be validated
+    )
+    
+    # Check if the match object is not None (input is valid)
+    if match:        
+        print('Valid')  # Print 'Valid' if the input matches all conditions
+    else:
+        print('Invalid')  # Print 'Invalid' if the input fails any condition
