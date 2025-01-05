@@ -1,0 +1,22 @@
+import re  # Importing the regular expressions module
+
+# Number of test cases
+T = int(input())  
+
+# Loop through each test case
+for _ in range(T):
+    # Regular expression to validate the input
+    match = re.match(
+        r'^'                             # Start of the string
+        r'(?!.*(.).*\1)'                 # Negative lookahead: Ensures no character repeats
+        r'(?=(.*[A-Z]){2,})'             # Positive lookahead: Ensures at least 2 uppercase letters
+        r'(?=(.*[0-9]){3,})'             # Positive lookahead: Ensures at least 3 digits
+        r'[a-zA-Z0-9]{10}$',             # Matches exactly 10 alphanumeric characters
+        input()                          # Input string to be validated
+    )
+    
+    # Check if the match object is not None (input is valid)
+    if match:        
+        print('Valid')  # Print 'Valid' if the input matches all conditions
+    else:
+        print('Invalid')  # Print 'Invalid' if the input fails any condition
