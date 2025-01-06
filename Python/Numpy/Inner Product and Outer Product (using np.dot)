@@ -1,0 +1,20 @@
+import numpy as np
+
+# Read and convert the first row of input into a 2D array (matrix A)
+A = np.array([list(map(int, input().split()))])
+
+# Read and convert the second row of input into a 2D array (matrix B)
+B = np.array([list(map(int, input().split()))])
+
+# Calculate the transpose of matrix A
+transpose_A = np.transpose(A)
+
+# Calculate the transpose of matrix B
+transpose_B = np.transpose(B)
+
+# Compute the dot product of A and transpose of B, and print the scalar result at position [0,0] (This is equivalent to the inner product)
+print(np.dot(A, transpose_B)[0, 0])
+
+# Compute the dot product of transpose of A and B, and print the resulting matrix
+# (This is equivalent to the outer product)
+print(np.dot(transpose_A, B))
