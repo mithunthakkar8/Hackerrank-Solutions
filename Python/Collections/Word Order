@@ -1,0 +1,22 @@
+# Import `Counter` to count occurrences of elements efficiently
+from collections import Counter  
+
+# Read the number of words
+n = int(input())
+
+# Initialize an empty list to store words
+words = []
+
+# Loop to read `n` words
+for _ in range(n):
+    word = input()  # Read a word from the user
+    words.append(word)  # Add the word to the list
+
+# Use Counter to count occurrences of each word in the list
+word_counter = Counter(words)
+
+# Output the number of unique words
+print(len(word_counter.keys()))
+
+# Output the counts of each word in the order they first appeared
+print(' '.join([str(value) for value in word_counter.values()]))
