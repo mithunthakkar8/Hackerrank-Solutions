@@ -1,0 +1,25 @@
+import numpy as np
+
+# Read the size of the square matrices (N)
+N = int(input())
+
+# Initialize an empty array A with shape (0, N) to store the first matrix
+A = np.empty((0, N), dtype=int)
+
+# Loop through N to input rows for matrix A
+for i in range(N):
+    # Read a row, convert it to a list of integers, and append it to matrix A
+    temp_array = np.array([list(map(int, input().split()))])
+    A = np.append(A, temp_array, axis=0)
+
+# Initialize an empty array B with shape (0, N) to store the second matrix
+B = np.empty((0, N), dtype=int)
+
+# Loop through N to input rows for matrix B
+for _ in range(N):
+    # Read a row, convert it to a list of integers, and append it to matrix B
+    temp_array = np.array([list(map(int, input().split()))])
+    B = np.append(B, temp_array, axis=0)
+
+# Perform matrix multiplication (dot product) of A and B, and print the result
+print(np.dot(A, B))
