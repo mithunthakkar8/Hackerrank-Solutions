@@ -1,0 +1,25 @@
+import array  # Importing the 'array' module to create an array with type constraints
+
+# Taking two space-separated inputs for n (size of the array) and m (size of sets A and B)
+n, m = input().split()
+n, m = int(n), int(m)  # Converting the inputs to integers
+
+# Creating an integer array by mapping input values to integers
+Array = array.array('i', (map(int, input().split())))
+
+# Reading sets A and B as space-separated integers
+A = set(map(int, input().split()))  # Set A contains "liked" elements
+B = set(map(int, input().split()))  # Set B contains "disliked" elements
+
+# Initializing the happiness score
+happiness = 0
+
+# Iterating through each element in the array
+for i in Array:
+    if i in A:  # If the element is in set A, increase happiness by 1
+        happiness += 1
+    elif i in B:  # If the element is in set B, decrease happiness by 1
+        happiness += -1
+
+# Printing the final happiness score
+print(happiness)
