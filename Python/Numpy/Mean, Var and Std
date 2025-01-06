@@ -1,0 +1,26 @@
+import numpy as np  # Import NumPy library for numerical operations
+
+# Read input values for n (number of rows) and m (number of columns)
+n, m = input().split()
+n, m = int(n), int(m)  # Convert input values to integers
+
+# Initialize an empty 2D NumPy array with shape (0, m) to hold the rows
+main_array = np.empty((0, m), dtype=int)
+
+# Loop through n iterations to read n rows of input
+for _ in range(n):
+    # Read a row, convert it to a list of integers, and reshape it into a 2D array
+    temp_array = np.array([list(map(int, input().split()))])
+    
+    # Append the new row to the main array along axis 0 (row-wise append)
+    main_array = np.append(main_array, temp_array, axis=0)
+
+# Calculate and print the mean of each row (axis=1 specifies row-wise calculation)
+print(np.mean(main_array, axis=1))
+
+# Calculate and print the variance of each column (axis=0 specifies column-wise calculation)
+print(np.var(main_array, axis=0))
+
+# Calculate and print the standard deviation of the entire array (no axis specified for global calculation)
+# Round the result to 11 decimal places for precision
+print(round(np.std(main_array, axis=None), 11))
