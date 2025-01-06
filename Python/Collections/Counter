@@ -1,0 +1,32 @@
+from collections import Counter  # Importing Counter to count occurrences of elements efficiently
+
+# Read the number of shoes available in the shop
+X = int(input())
+
+# Read the shoe sizes available in the shop and split them into a list
+shoe_sizes_shop = input().split()
+
+# Create a Counter to count the number of shoes available for each size
+shop_sizes_counter = Counter(shoe_sizes_shop)
+
+# Read the number of customers
+N = int(input())
+
+# Initialize total earnings
+earnings = 0
+
+# Process each customer's request
+for _ in range(N):
+    # Read the requested shoe size and the price the customer is willing to pay
+    shoe_size, price = input().split()
+    price = int(price)  # Convert the price to an integer
+
+    # Check if the requested shoe size is available and in stock
+    if shoe_size in shop_sizes_counter and shop_sizes_counter[shoe_size] > 0:
+        # Add the price to earnings
+        earnings += price
+        # Decrease the stock of the requested shoe size by 1
+        shop_sizes_counter[shoe_size] -= 1
+
+# Output the total earnings
+print(earnings)
