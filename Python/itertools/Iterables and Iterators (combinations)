@@ -1,0 +1,24 @@
+# Import the `combinations` function to generate subsets of a specific size.
+from itertools import combinations  
+
+# Read the total number of letters.
+N = int(input())
+
+# Read a space-separated list of letters.
+Letters = input().split()
+
+# Read the size of the combinations to be generated.
+K = int(input())
+
+# Generate all possible combinations of the given letters of size K.
+Letter_Combinations = list(combinations(Letters, K))
+
+# Count the number of combinations that contain the letter 'a'.
+Count_a = len([1 for combination in Letter_Combinations if 'a' in combination])
+
+# Calculate the probability of a combination containing the letter 'a'.
+# Round the result to three decimal places for readability.
+Probability = round(Count_a / len(Letter_Combinations), 3)
+
+# Output the probability.
+print(Probability)
