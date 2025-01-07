@@ -1,0 +1,12 @@
+from itertools import groupby
+
+# Read the input string from the user
+S = input()
+
+# Use `groupby` to group consecutive occurrences of each character in the input string.
+# The `key` parameter is set to `lambda x: x` to group by the characters themselves.
+for key, group in groupby(S, key=lambda x: x):
+    # Convert the `group` iterator to a list to count the occurrences of the current character.
+    # Cast `key` to an integer as the problem assumes numeric input.
+    # Print the tuple (count, character) with a space separating each output.
+    print((len(list(group)), int(key)), end=' ')
