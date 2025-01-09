@@ -1,6 +1,7 @@
 import sys
 from collections import namedtuple
 
+# Read the number of students (N). 
 N = input()
 
 # Read the column names (keys) which represent the attributes of each student.
@@ -30,9 +31,9 @@ for line in line_separated_data:
 Total_Marks = 0
 
 # Iterate over the list of students.
-for Student in Student_Details:
+for Student_Iter in Student_Details:
     # Add each student's marks to the total marks (marks are converted to integers).
-    Total_Marks += int(Student.MARKS)
+    Total_Marks += int(Student_Iter.MARKS)
 
 # Calculate the total number of students.
 Total_Students = int(N)
