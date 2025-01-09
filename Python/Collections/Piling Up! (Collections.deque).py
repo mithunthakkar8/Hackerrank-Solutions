@@ -7,7 +7,7 @@ T = int(input())
 # Iterate through each test case
 for _ in range(T):
     # Read the number of side lengths (not used directly in the logic)
-    n = int(input())
+    _ = int(input())
     
     # Initialize a deque to hold the side lengths and a set to store used side lengths
     d = deque() 
