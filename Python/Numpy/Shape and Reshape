@@ -1,0 +1,8 @@
+# Importing NumPy library as np for efficient numerical operations
+import numpy as np
+
+# Reading input as a space-separated string, converting to integers, and then into a NumPy array
+array = np.array(list(map(int, (input().split()))))
+
+# Reshaping the 1D array into a 3x3 2D array and printing the result
+print(np.reshape(array, (3, 3)))
