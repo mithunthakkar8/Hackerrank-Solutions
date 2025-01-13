@@ -1,0 +1,10 @@
+import numpy as np  # Import the numpy library, which provides support for arrays and polynomials
+
+# Read the coefficients of the polynomial from user input and convert them to a list of floats
+Coef = list(map(float, input().split()))
+
+# Read the value of x for which we want to evaluate the polynomial
+x = int(input())
+
+# Evaluate the polynomial at the given x value using the coefficients and print the result
+print(np.polyval(Coef, x))
