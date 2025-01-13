@@ -1,0 +1,20 @@
+# Import the NumPy library, which provides tools for numerical computations
+import numpy as np
+
+# Read the number of rows for the square matrix (assumes the matrix is square)
+rows = int(input())
+
+# Initialize an empty list to store the rows of the matrix
+rows_list = []
+
+# Read each row of the matrix
+for _ in range(rows):
+    # Read a row of floating-point numbers, split them by spaces, and append to rows_list
+    row = list(map(float, input().split()))
+    rows_list.append(row)
+
+# Convert the list of rows into a NumPy array for matrix operations
+array = np.array(rows_list)
+
+# Compute the determinant of the matrix and print it rounded to 2 decimal places
+print(round(np.linalg.det(array), 2))
